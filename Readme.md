@@ -17,8 +17,9 @@ It's all about how to Build Go Backend System from Scratch to Production-ready M
     - E5 - E9   := Learn Go Syntax and Programming
     - E10       := Go API Server Setup
     - E11       := User API Setup
+    - E12       := Use Case Layer
     - TBA
 
 
 ### Legal:
-You only allowed to Fork this repository. If we found redistributing any of the material of this tutorial series. My Lawyer will handle it with panelty as per international copyright law.
+You are only allowed to Fork this repository. If we found redistributing any of the material of this tutorial series. My Lawyer will handle it with a penalty as per international copyright law.
