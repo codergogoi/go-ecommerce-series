@@ -18,8 +18,17 @@ It's all about how to Build Go Backend System from Scratch to Production-ready M
     - E10       := Go API Server Setup
     - E11       := User API Setup
     - E12       := Use Case Layer
+    - E13       := How to use ORM
+    - E14       := Use database effeciently
+    - E15       := User Authentication
+    - E16       := Verify User
+    - E17       := Send SMS using Twilio
+    - E18       := Become Seller & Seller Flow
+    - E19       := Setup Product Catalogue
     - TBA
 
+### Postman Collection:
+https://documenter.getpostman.com/view/8734310/2sA3BkcD5x
 
 ### Legal:
 You are only allowed to Fork this repository. If we found redistributing any of the material of this tutorial series. My Lawyer will handle it with a penalty as per international copyright law.

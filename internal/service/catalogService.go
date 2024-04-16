@@ -1,15 +1,13 @@
-package rest
+package service
 
 import (
-	"github.com/gofiber/fiber/v2"
 	"go-ecommerce-app/config"
 	"go-ecommerce-app/internal/helper"
-	"gorm.io/gorm"
+	"go-ecommerce-app/internal/repository"
 )
 
-type RestHandler struct {
-	App    *fiber.App
-	DB     *gorm.DB
+type CatalogService struct {
+	Repo   repository.CatalogRepository
 	Auth   helper.Auth
 	Config config.AppConfig
 }
