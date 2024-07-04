@@ -116,7 +116,7 @@ func (a Auth) VerifyToken(t string) (domain.User, error) {
 func (a Auth) Authorize(ctx *fiber.Ctx) error {
 
 	authHeader := ctx.GetReqHeaders()["Authorization"]
-	user, err := a.VerifyToken(authHeader)
+	user, err := a.VerifyToken(authHeader[0])
 
 	if err == nil && user.ID > 0 {
 		ctx.Locals("user", user)
@@ -143,7 +143,7 @@ func (a Auth) GenerateCode() (int, error) {
 func (a Auth) AuthorizeSeller(ctx *fiber.Ctx) error {
 
 	authHeader := ctx.GetReqHeaders()["Authorization"]
-	user, err := a.VerifyToken(authHeader)
+	user, err := a.VerifyToken(authHeader[0])
 
 	if err != nil {
 		return ctx.Status(401).JSON(&fiber.Map{

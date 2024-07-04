@@ -5,7 +5,7 @@ import "time"
 type Product struct {
 	ID          uint      `json:"id" gorm:"PrimaryKey"`
 	Name        string    `json:"name" gorm:"index;"`
-	Description uint      `json:"description"`
+	Description string    `json:"description"`
 	CategoryId  uint      `json:"category_id"`
 	ImageUrl    string    `json:"image_url" `
 	Price       float64   `json:"price"`

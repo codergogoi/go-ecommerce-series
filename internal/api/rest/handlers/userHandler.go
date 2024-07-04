@@ -99,7 +99,7 @@ func (h *UserHandler) Login(ctx *fiber.Ctx) error {
 func (h *UserHandler) GetVerificationCode(ctx *fiber.Ctx) error {
 
 	user := h.svc.Auth.GetCurrentUser(ctx)
-
+	log.Println(user)
 	// create verification code and update to user profile in DB
 	err := h.svc.GetVerificationCode(user)
 	log.Println(err)
