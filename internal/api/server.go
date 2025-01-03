@@ -54,8 +54,8 @@ func StartServer(config config.AppConfig) {
 	app.Use(c)
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		return rest.SuccessResponse(c, "Healthy", &fiber.Map{
-			"status": "ok",
+		return rest.SuccessResponse(c, "I am Healthy", &fiber.Map{
+			"status": "ok with 200",
 		})
 	})
 
