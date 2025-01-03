@@ -7,6 +7,7 @@ import (
 	"go-ecommerce-app/internal/api/rest/handlers"
 	"go-ecommerce-app/internal/domain"
 	"go-ecommerce-app/internal/helper"
+	"go-ecommerce-app/pkg/payment"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -45,20 +46,29 @@ func StartServer(config config.AppConfig) {
 
 	// cors configuration
 	c := cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3030",
+		AllowOrigins: "http://localhost:3000",
 		AllowHeaders: "Content-Type, Accept, Authorization",
 		AllowMethods: "GET, POST, PUT, PATCH, DELETE, OPTIONS",
 	})
 
 	app.Use(c)
 
+	app.Get("/", func(c *fiber.Ctx) error {
+		return rest.SuccessResponse(c, "Healthy", &fiber.Map{
+			"status": "ok",
+		})
+	})
+
 	auth := helper.SetupAuth(config.AppSecret)
+
+	paymentClient := payment.NewPaymentClient(config.StripeSecret)
 
 	rh := &rest.RestHandler{
 		App:    app,
 		DB:     db,
 		Auth:   auth,
 		Config: config,
+		Pc:     paymentClient,
 	}
 
 	setupRoutes(rh)
@@ -68,10 +78,10 @@ func StartServer(config config.AppConfig) {
 }
 
 func setupRoutes(rh *rest.RestHandler) {
+	// catalog
+	handlers.SetupCatalogRoutes(rh)
 	// user handler
 	handlers.SetupUserRoutes(rh)
 	// transactions
 	handlers.SetupTransactionRoutes(rh)
-	// catalog
-	handlers.SetupCatalogRoutes(rh)
 }
