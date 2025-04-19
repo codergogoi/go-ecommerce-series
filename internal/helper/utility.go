@@ -2,17 +2,16 @@ package helper
 
 import (
 	"crypto/rand"
-	"strconv"
 )
 
-func RandomNumbers(length int) (int, error) {
+func RandomNumbers(length int) (string, error) {
 
 	const numbers = "1234567890"
 
 	buffer := make([]byte, length)
 	_, err := rand.Read(buffer)
 	if err != nil {
-		return 0, err
+		return "", err
 	}
 
 	numLength := len(numbers)
@@ -21,5 +20,5 @@ func RandomNumbers(length int) (int, error) {
 		buffer[i] = numbers[int(buffer[i])%numLength]
 	}
 
-	return strconv.Atoi(string(buffer))
+	return string(buffer), nil
 }
